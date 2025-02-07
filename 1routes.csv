@@ -1,0 +1,69 @@
+route_id,stop_type,route_description,start,end,origin_latitude,origin_longitude,destination_latitude,destination_longitude,distance,duration,route_status,route_category,vehicle_id,vehicle_vin,vehicle_make,vehicle_year,vehicle_model,vehicle_fuelTypePrimary,vehicle_manufacturer,vehicle_additionalInfo
+ROUTE_1,start,"Los Angeles, CA to Dallas, TX","Los Angeles, CA","Dallas, TX",34.0522,-118.2437,32.7767,-96.797,2311893.6,0.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,Long-haul sleeper cab
+ROUTE_1,drive,"Los Angeles, CA to Dallas, TX","Los Angeles, CA","Dallas, TX",34.0522,-118.2437,32.7767,-96.797,0.0,240.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,Long-haul sleeper cab
+ROUTE_1,gas,Break at Quartzsite Truck Stop,"Los Angeles, CA","Phoenix, AZ",33.6033,-112.7486,33.68,-113.07,0.0,30.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,
+ROUTE_1,drive,"Los Angeles, CA to Dallas, TX","Los Angeles, CA","Dallas, TX",34.0522,-118.2437,32.7767,-96.797,0.0,185.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,Long-haul sleeper cab
+ROUTE_1,break,Meal Stop,"Los Angeles, CA","Phoenix, AZ",32.1557,-110.8825,33.4484,-112.0740,0.0,75.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,
+ROUTE_1,drive,"Los Angeles, CA to Dallas, TX","Los Angeles, CA","Dallas, TX",34.0522,-118.2437,32.7767,-96.797,240.0,185.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,Long-haul sleeper cab
+ROUTE_1,sleep,Sleep Stop at Las Cruces,El Paso,El Paso,32.3469,-108.7431,32.3199,–106.7620,0.0,600.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,"Overnight rest"
+ROUTE_1,drive,"Los Angeles, CA to Dallas, TX","Los Angeles, CA","Dallas, TX",34.0522,-118.2437,32.7767,-96.797,0.0,60.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,Long-haul sleeper cab
+ROUTE_1,break,Break at Quartzsite Truck Stop,"Los Angeles, CA","Phoenix, AZ",31.7619,-106.4869,33.68,-113.07,0.0,20.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,
+ROUTE_1,drive,"Los Angeles, CA to Dallas, TX","Los Angeles, CA","Dallas, TX",34.0522,-118.2437,32.7767,-96.797,0.0,240.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,Long-haul sleeper cab
+ROUTE_1,gas,Gas Stop,"Los Angeles, CA","Phoenix, AZ",30.9950,-104.7590,33.4484,-112.0740,0.0,30.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,
+ROUTE_1,drive,"Los Angeles, CA to Dallas, TX","Los Angeles, CA","Dallas, TX",34.0522,-118.2437,32.7767,-96.797,280.0,185.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,Long-haul sleeper cab
+ROUTE_1,sleep,Sleep Stop at Midland,El Paso,El Paso,31.8489,-102.0779,32.3199,–106.7620,0.0,720.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,"Overnight rest"
+ROUTE_1,drive,"Los Angeles, CA to Dallas, TX","Los Angeles, CA","Dallas, TX",34.0522,-118.2437,32.7767,-96.797,0.0,180.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,Long-haul sleeper cab
+ROUTE_1,break,Break at Abilene Truck Stop,"Los Angeles, CA","Phoenix, AZ",32.4487,-99.7331,33.68,-113.07,0.0,30.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,
+ROUTE_1,drive,"Los Angeles, CA to Dallas, TX","Los Angeles, CA","Dallas, TX",32.7767,-118.2437,32.7767,-96.797,0.0,270.0,Active,Freight,V001,1FTFW1ET1EKF51234,Freightliner,2021,Cascadia,Diesel,Daimler Trucks North America,Long-haul sleeper cab
+ROUTE_2,start,"Chicago, IL to Atlanta, GA","Chicago, IL","Atlanta, GA",41.8781,-87.6298,33.749,-84.388,1107976.5,0.0,Active,Freight,V002,1XKAD49X68J123456,Volvo,2022,VNL,Diesel,Volvo Trucks,Day cab configuration
+ROUTE_2,drive,"Chicago, IL to Atlanta, GA","Chicago, IL","Atlanta, GA",41.8781,-87.6298,33.749,-84.388,0.0,150.0,Active,Freight,V002,1XKAD49X68J123456,Volvo,2022,VNL,Diesel,Volvo Trucks,Day cab configuration
+ROUTE_2,gas,Gas Stop,"Tompkinsville, KY","Nashville, TN",39.7684,-86.1581,36.1627,-86.7816,0.0,20.0,Active,Freight,V002,1XKAD49X68J123456,Volvo,2022,VNL,Diesel,Volvo Trucks,"Mandatory break"
+ROUTE_2,drive,"Chicago, IL to Atlanta, GA","Chicago, IL","Atlanta, GA",41.8781,-87.6298,33.749,-84.388,0.0,150.0,Active,Freight,V002,1XKAD49X68J123456,Volvo,2022,VNL,Diesel,Volvo Trucks,Day cab configuration
+ROUTE_2,break, Refreshment Break,"Tompkinsville, KY","Nashville, TN",38.2527,-85.7585,36.1627,-86.7816,0.0,40.0,Active,Freight,V002,1XKAD49X68J123456,Volvo,2022,VNL,Diesel,Volvo Trucks,"Mandatory break"
+ROUTE_2,drive,"Chicago, IL to Atlanta, GA","Chicago, IL","Atlanta, GA",41.8781,-87.6298,33.749,-84.388,0.0,240.0,Active,Freight,V002,1XKAD49X68J123456,Volvo,2022,VNL,Diesel,Volvo Trucks,Day cab configuration
+ROUTE_2,sleep,"Chicago, IL to Atlanta, GA","Chicago, IL","Atlanta, GA",36.1403,-85.6766,33.749,-84.388,0.0,500.0,Active,Freight,V002,1XKAD49X68J123456,Volvo,2022,VNL,Diesel,Volvo Trucks,Day cab configuration
+ROUTE_2,drive,"Chicago, IL to Atlanta, GA","Chicago, IL","Atlanta, GA",41.8781,-87.6298,33.749,-84.388,0.0,180.0,Active,Freight,V002,1XKAD49X68J123456,Volvo,2022,VNL,Diesel,Volvo Trucks,Day cab configuration
+ROUTE_3,start,"Houston, TX to New Orleans, LA","Houston, TX","New Orleans, LA",29.7604,-95.3698,29.9511,-90.0715,559494.1,0.0,Active,Freight,V003,3AKJHHDR7FSA12345,Kenworth,2020,T680,Diesel,PACCAR Inc.,Engineered for heavy-duty haul
+ROUTE_3,drive,Fuel Stop,"Houston, TX","Beaumont, TX",29.7604,-95.3698,30.0802,-94.1266,87000.0,90.0,Active,Freight,V003,3AKJHHDR7FSA12345,Kenworth,2020,T680,Diesel,PACCAR Inc.,
+ROUTE_3,break,Meal Stop,"Lake Charles, LA",Rest Area,30.0802,-94.0820,30.3,-92.8,0.0,20.0,Active,Freight,V003,3AKJHHDR7FSA12345,Kenworth,2020,T680,Diesel,PACCAR Inc.,
+ROUTE_3,drive,Fuel Stop,"Houston, TX","Beaumont, TX",29.7604,-95.3698,30.0802,-94.1266,87000.0,90.0,Active,Freight,V003,3AKJHHDR7FSA12345,Kenworth,2020,T680,Diesel,PACCAR Inc.,
+ROUTE_3,gas,Fuel Stop,"Houston, TX","Beaumont, TX",30.2424,-93.0343,30.2266,-94.1266,87000.0,30.0,Active,Freight,V003,3AKJHHDR7FSA12345,Kenworth,2020,T680,Diesel,PACCAR Inc.,
+ROUTE_3,drive,Fuel Stop,"Houston, TX","Beaumont, TX",29.7604,-95.3698,30.0802,-94.1266,87000.0,90.0,Active,Freight,V003,3AKJHHDR7FSA12345,Kenworth,2020,T680,Diesel,PACCAR Inc.,
+ROUTE_3,drive,Fuel Stop,"Houston, TX","Beaumont, TX",29.7604,-95.3698,30.0802,-94.1266,87000.0,85.0,Active,Freight,V003,3AKJHHDR7FSA12345,Kenworth,2020,T680,Diesel,PACCAR Inc.,
+ROUTE_4,start,"Miami, FL to New York City, NY","Miami, FL","New York City, NY",25.7617,-80.1918,40.7128,-74.006,2128070.8,0.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,Equipped with advanced safety features
+ROUTE_4,drive,Fuel Stop,"Miami, FL","Jacksonville, FL",25.7617,-80.1918,30.3322,-81.6557,560000.0,120.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_4,break,Port St. Lucie Truck Stop,"Miami, FL","Jacksonville, FL",27.2730,-80.3336,30.3322,-81.6557,560000.0,20.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_4,drive,Fuel Stop,"Miami, FL","Jacksonville, FL",25.7617,-80.1918,30.3322,-81.6557,560000.0,180.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_4,gas,Fuel Stop,"Miami, FL","Jacksonville, FL",30.3322,-81.6557,30.3322,-81.6557,560000.0,30.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_4,drive,Fuel Stop,"Miami, FL","Jacksonville, FL",25.7617,-80.1918,30.3322,-81.6557,560000.0,245.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_4,sleep,Motel Stop,"Miami, FL","Jacksonville, FL",33.1859,-80.6020,30.3322,-81.6557,560000.0,720.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_4,drive,Fuel Stop,"Miami, FL","Jacksonville, FL",25.7617,-80.1918,30.3322,-81.6557,560000.0,180.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_4,break,Truck Stop,"Miami, FL","Jacksonville, FL",35.3905,-78.7042,30.3322,-81.6557,560000.0,30.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_4,drive,Fuel Stop,"Miami, FL","Jacksonville, FL",25.7617,-80.1918,30.3322,-81.6557,560000.0,240.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_4,gas,Fuel Stop,"Miami, FL","Jacksonville, FL",37.5407,-77.4360,30.3322,-81.6557,560000.0,30.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_4,drive,Fuel Stop,"Miami, FL","Jacksonville, FL",25.7617,-80.1918,30.3322,-81.6557,560000.0,90.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_4,sleep,Motel Stop,"Miami, FL","Jacksonville, FL",38.9072,-77.0369,30.3322,-81.6557,560000.0,750.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_4,drive,Fuel Stop,"Miami, FL","Jacksonville, FL",25.7617,-80.1918,30.3322,-81.6557,560000.0,150.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_4,break,Truck Stop,"Miami, FL","Jacksonville, FL",39.9526,-75.1652,30.3322,-81.6557,560000.0,30.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_4,drive,Fuel Stop,"Miami, FL","Jacksonville, FL",25.7617,-80.1918,30.3322,-81.6557,560000.0,90.0,Active,Freight,V004,1GD312CG9FF123456,Peterbilt,2019,579,Diesel,PACCAR Inc.,"Fuel Stop planned"
+ROUTE_5,start,"Denver, CO to Seattle, WA","Denver, CO","Seattle, WA",39.7392,-104.9903,47.6062,-122.3321,2064906.5,0.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,Designed for mountainous terrain
+ROUTE_5,drive,"Denver, CO to Seattle, WA","Denver, CO","Seattle, WA",39.7392,-104.9903,47.6062,-122.3321,0.0,135.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,Designed for mountainous terrain
+ROUTE_5,break,Meal Stop,"Cheyenne, WY","Rock Springs, WY",41.3066,-105.6950,41.5875,-109.2029,0.0,15.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,
+ROUTE_5,drive,"Denver, CO to Seattle, WA","Denver, CO","Seattle, WA",39.7392,-104.9903,47.6062,-122.3321,0.0,120.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,Designed for mountainous terrain
+ROUTE_5,gas,Meal Stop,"Cheyenne, WY","Rock Springs, WY",41.6033,-109.4735,41.5875,-109.2029,0.0,30.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,
+ROUTE_5,drive,"Denver, CO to Seattle, WA","Denver, CO","Seattle, WA",39.7392,-104.9903,47.6062,-122.3321,0.0,270.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,Designed for mountainous terrain
+ROUTE_5,sleep,Sleep stop at TA Travel Center,"Rock Springs, WY","Twin Falls, ID",40.9132,-111.4654,42.5628,-114.4609,0.0,600.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,
+ROUTE_5,drive,"Denver, CO to Seattle, WA","Denver, CO","Seattle, WA",39.7392,-104.9903,47.6062,-122.3321,0.0,200.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,Designed for mountainous terrain
+ROUTE_5,break,Meal Stop,"Twin Falls, ID","Spokane, WA",42.5610,-114.4580,47.6588,-117.426,0.0,20.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,
+ROUTE_5,drive,"Denver, CO to Seattle, WA","Denver, CO","Seattle, WA",39.7392,-104.9903,47.6062,-122.3321,0.0,120.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,Designed for mountainous terrain
+ROUTE_5,gas,Meal Stop,"Cheyenne, WY","Rock Springs, WY",43.6150,-116.2023,43.6150,-109.2029,0.0,30.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,
+ROUTE_5,drive,"Denver, CO to Seattle, WA","Denver, CO","Seattle, WA",39.7392,-104.9903,47.6062,-122.3321,0.0,150.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,Designed for mountainous terrain
+ROUTE_5,sleep,Sleep stop at Love’s Truck Stop,"Spokane, WA","Ellensburg, WA",43.6150,-116.2023,46.9965,-120.5478,0.0,480.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,
+ROUTE_5,drive,"Denver, CO to Seattle, WA","Denver, CO","Seattle, WA",39.7392,-104.9903,47.6062,-122.3321,0.0,165.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,Designed for mountainous terrain
+ROUTE_5,gas,Fuel Stop,"Ellensburg, WA","Seattle, WA",46.6021,-120.5059,47.6062,-122.3321,0.0,20.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,
+ROUTE_5,drive,"Denver, CO to Seattle, WA","Denver, CO","Seattle, WA",39.7392,-104.9903,47.6062,-122.3321,0.0,155.0,Active,Freight,V005,1M8GDM9AXKP042788,Mack,2023,Anthem,Diesel,Mack Trucks,Designed for mountainous terrain
+
+
+
+
+

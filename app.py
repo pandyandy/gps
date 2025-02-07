@@ -19,6 +19,9 @@ st.set_page_config(
     page_icon="🚚",
     layout="wide"
 )
+if 'driver_data' not in st.session_state:
+    with st.spinner("Loading data..."):
+        st.session_state.driver_data = keboola.read_table(TABLE_ID)
 
 # Add custom CSS for better tab styling
 st.markdown("""
@@ -59,11 +62,11 @@ tab1, tab2, tab3 = st.tabs([
 if 'route_progress' not in st.session_state:
     # Initialize default progress
     st.session_state.route_progress = {
-        'ROUTE_1': 0.27,  # 33% complete
-        'ROUTE_2': 0.43,  # 40% complete
-        'ROUTE_3': 0.52,  # 50% complete
-        'ROUTE_4': 0.22,  # 25% complete
-        'ROUTE_5': 0.34   # 33% complete
+        'ROUTE_1': 0.47,  # 33% complete
+        'ROUTE_2': 0.65,  # 40% complete
+        'ROUTE_3': 0.32,  # 50% complete
+        'ROUTE_4': 0.32,  # 25% complete
+        'ROUTE_5': 0.37   # 33% complete
     }
 with tab1:
     @st.cache_data
@@ -71,7 +74,7 @@ with tab1:
         # Read routes data
         # Define paths for data files
         data_dir = os.path.dirname(__file__)
-        routes_path = os.path.join(data_dir, '1routes_vehicles_status.csv')
+        routes_path = os.path.join(data_dir, '1routes.csv')
         routes_df = pd.read_csv(routes_path)
         
         # Convert distance from km to miles
@@ -102,13 +105,14 @@ with tab1:
     def create_route_map(selected_routes, routes_df, geojson_data):
         # Create a base map centered on central US with closer zoom
         m = folium.Map(
-            location=[37.0902, -90.7129],  # Moved 5 degrees east from -95.7129
+            location=[37.0902, -85.7129],  # Moved further east from -90.7129
             zoom_start=4.5,
             tiles='cartodbpositron'
         )
 
         # Define some colors for different routes
         colors = ['darkred', 'darkblue', 'darkgreen', 'purple', 'orange']
+
 
         # Process each selected route
         for idx, route_id in enumerate(selected_routes):
@@ -147,16 +151,59 @@ with tab1:
                     dash_array=[10, 20],
                     pulse_color='#FFF'
                 ).add_to(m)
+
+            # Add stop markers for this route
+            route_stops = routes_df[
+                (routes_df['route_id'] == route_id) & 
+                (routes_df['stop_type'].isin(['gas', 'sleep', 'break']))
+            ]
+            
+            for _, stop in route_stops.iterrows():
+                # Set icon color and icon type based on stop type
+                if stop['stop_type'] == 'sleep':
+                    icon_color = 'purple'
+                    icon_name = 'bed'
+                elif stop['stop_type'] == 'gas':
+                    icon_color = 'green' 
+                    icon_name = 'gas-station'
+                elif stop['stop_type'] == 'break':
+                    icon_color = 'lightgray'
+                    icon_name = 'cutlery'
+                else:
+                    icon_color = 'lightblue'  # Default color
+                    icon_name = 'glyphicon-info-sign'  # Default icon
+
+                icon = folium.Icon(
+                    icon=icon_name,
+                    prefix='glyphicon',  # Using Bootstrap Glyphicons
+                    color=icon_color,
+                    icon_color='white',  # Use white for the icon color
+                )
+                
+                # Create popup content
+                popup_content = f"""
+                    <b>Stop Type:</b> {stop['stop_type'].title()}<br>
+                    <b>Description:</b> {stop['route_description']}<br>
+                    <b>Duration:</b> {stop['duration']/60:.1f} hours
+                """
+                
+                folium.Marker(
+                    location=[stop['origin_latitude'], stop['origin_longitude']],
+                    tooltip=folium.Tooltip(popup_content, max_width=300),
+                    icon=icon
+                ).add_to(m)
             
             # Add vehicle marker at current position (use the last point of the route if 100% complete)
             vehicle_position = completed_route[-1] if completed_route else locations[0]
             
+            # Calculate total duration including breaks
+            total_duration = routes_df[routes_df['route_id'] == route_id]['duration'].sum()
             # Calculate remaining distance and time (ensure they don't go below 0)
             remaining_distance = max(route_info['distance'] * (1 - progress), 0)
-            remaining_time = max(route_info['duration'] * (1 - progress), 0)
+            remaining_time = max(total_duration * (1 - progress), 0)
             
             # Calculate average speed in mph
-            avg_speed = (route_info['distance']/1609.34) / (route_info['duration']/3600)
+            avg_speed = (route_info['distance']/1000) / (route_info['duration']/60)
             
             vehicle_icon = folium.DivIcon(
                 html=f'''
@@ -174,9 +221,7 @@ with tab1:
                 <b>{route_id}</b><br>
                 Vehicle: {route_info['vehicle_make']} {route_info['vehicle_model']}<br>
                 Completed: {progress*100:.0f}%<br>
-                Remaining Distance: {remaining_distance/1609.34:.1f} miles<br>
-                Remaining Time: {remaining_time/3600:.1f} hours<br>
-                Average Speed: {avg_speed:.1f} mph
+                Remaining Distance: {remaining_distance/1000:.1f} miles<br>
                 """
             ).add_to(m)
             # Add markers for start and end points
@@ -213,70 +258,73 @@ with tab1:
         st_folium(m, width=1400, height=600)
 
         # Display route information
-        if selected_routes:
-            #st.subheader("Route Details")
-            for route_id in selected_routes:
-                route_info = routes_df[routes_df['route_id'] == route_id].iloc[0]
-                # Get the correct progress for this specific route
-                route_progress = st.session_state.route_progress[route_id]
-                # Calculate remaining distance and time using the correct progress
-                remaining_distance = route_info['distance'] * (1 - route_progress)
-                remaining_time = route_info['duration'] * (1 - route_progress)
-                
-                with st.expander(f"📍 {route_id} - {route_info['route_description']}"):
-                    col1, col2, col3, col4 = st.columns(4)
-                    with col1:
-                        st.metric(
-                            "Total Distance (miles)", 
-                            f"{route_info['distance']/1000:.1f}",
-                        )
-                    with col2:
-                        st.metric(
-                            "Total Duration (hours)", 
-                            f"{route_info['duration']/3600:.1f}",
-                        )
-                    with col3:
-                        st.metric("Status", route_info['route_status'])
-                    with col4:
-                        st.metric("Completed", f"{route_progress*100:.0f}%")
-                    
-                    st.write("Vehicle Information:")
-                    st.markdown(f"""
-                        - Vehicle ID: {route_info['vehicle_id']}
-                        - Make: {route_info['vehicle_make']}
-                        - Model: {route_info['vehicle_model']}
-                        - Year: {route_info['vehicle_year']}
-                        - Fuel Type: {route_info['vehicle_fuelTypePrimary']}
-                        - Additional Info: {route_info['vehicle_additionalInfo']}
-                    """)
+        
     routes_df, geojson_data = load_data()
     # Create a route selector
 
     route_ids = list(geojson_data.keys())
-    selected_routes = st.pills(
+    selected_route = st.pills(
         "Select from Active Vehicles",
         options=route_ids,
-        default=route_ids,
-        selection_mode="multi",
-        format_func=lambda x: f"{x} ({routes_df[routes_df['route_id'] == x].iloc[0]['route_description']})"
+        default=route_ids[0],
+        selection_mode="single",
+        format_func=lambda x: f"{x} – {routes_df[routes_df['route_id'] == x].iloc[0]['route_description']}"
     )
-    col1, col2= st.columns([4,1], gap="medium")
+
+
+    col1, col2= st.columns([7,3], gap="small")
     with col1:
-        create_route_map(selected_routes, routes_df, geojson_data)
+        create_route_map(route_ids, routes_df, geojson_data)
     with col2:        
-        current_time = datetime.now().strftime("%H:%M:%S")
-        st.metric("Last Updated", current_time)
-        def update_progress():
+   #     current_time = datetime.now().strftime("%H:%M:%S")
+     #   st.metric("Last Updated", current_time)
+      #  def update_progress():
             # Increment progress for each route by a small amount
-            for route_id in st.session_state.route_progress:
-                current_progress = st.session_state.route_progress[route_id]
+           # for route_id in st.session_state.route_progress:
+           #     current_progress = st.session_state.route_progress[route_id]
                 # Add 5% progress, but don't exceed 100%
-                st.session_state.route_progress[route_id] = min(current_progress + 0.01, 1.0)
+         #       st.session_state.route_progress[route_id] = min(current_progress + 0.01, 1.0)
 
-        st.button("🔄 Update Data", use_container_width=True, on_click=update_progress, type="tertiary")
+        #st.button("🔄 Update Data", use_container_width=True, on_click=update_progress, type="tertiary")
 
-
-
+        if selected_route:
+            #st.subheader("Route Details")
+            route_id = selected_route
+            route_info = routes_df[routes_df['route_id'] == route_id].iloc[0]
+            # Get the correct progress for this specific route
+            route_progress = st.session_state.route_progress[route_id]
+            # Calculate remaining distance and time using the correct progress
+            remaining_distance = route_info['distance'] * (1 - route_progress)
+            total_duration = routes_df[routes_df['route_id'] == route_id]['duration'].sum()
+            remaining_time = total_duration * (1 - route_progress)
+            drive_time = routes_df[(routes_df['route_id'] == route_id) & 
+                                 (routes_df['stop_type'] == 'drive')]['duration'].sum()
+            pause_time = total_duration - drive_time
+            with st.container(border=True, height=600):
+                st.markdown(f"#### 📍 {route_id} – {route_info['route_description']}")
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.metric(
+                        "Total Distance (miles)", 
+                        f"{route_info['distance']/1000:.1f}",
+                    )
+                with col2:
+                    st.metric(
+                        "Total Duration (hours)", 
+                        f"{total_duration/60:.1f}",
+                    )
+                with col1:
+                    st.metric("Pause Time", f"{pause_time/60:.1f}")
+                with col2:
+                    st.metric("Time on the Road", f"{drive_time/60:.1f}")
+                st.write("Vehicle Information:")
+                st.markdown(f"""
+                    - Vehicle ID: {route_info['vehicle_id']}
+                    - Make: {route_info['vehicle_make']}
+                    - Model: {route_info['vehicle_model']}
+                    - Year: {route_info['vehicle_year']}
+                    - Fuel Type: {route_info['vehicle_fuelTypePrimary']}
+                """)
 
 def create_geojson_route_map(route_df):
     """Create a map with the CSV route data colored by road types"""
@@ -384,11 +432,11 @@ def create_geojson_route_map(route_df):
     return m
 
 with tab2:
-    path = os.path.join(os.path.dirname(__file__), '823_road_type.csv')
+    path = os.path.join(os.path.dirname(__file__), '945_road_type.csv')
     road_type_df = pd.read_csv(path)
     
     # Add play/pause controls
-    col1, col2 = st.columns([4,1], gap="medium")
+    col1, col2 = st.columns([4,1], gap="small")
     with col1:
         # First create the slider
         step = st.slider(
@@ -422,10 +470,10 @@ with tab2:
         vehicle_icon = folium.DivIcon(
             html=f'''
                 <div style="font-family: FontAwesome; color: white; background-color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                    <span style="font-size: 16px;">🚛</span>
+                    <span style="font-size: 20px;">🚛</span>
                 </div>
             ''',
-            icon_size=(25, 25)
+            icon_size=(30, 30)
         )
         
         current_location = [current_step['LAT'], current_step['LONG']]
@@ -492,10 +540,8 @@ with tab2:
 
 with tab3:
     # Load the driver data
-    if 'driver_data' not in st.session_state:
-        st.session_state.driver_data = keboola.read_table(TABLE_ID)
         # Convert timestamp column to string to make it editable
-        st.session_state.driver_data['timestamp'] = st.session_state.driver_data['timestamp'].astype(str)
+    st.session_state.driver_data['timestamp'] = st.session_state.driver_data['timestamp'].astype(str)
     
     # Function to check if timestamp matches the correct format
     def is_valid_timestamp(ts):
@@ -561,5 +607,6 @@ with tab3:
             # Convert timestamp column to string to make it editable
             st.session_state.driver_data['timestamp'] = st.session_state.driver_data['timestamp'].astype(str)
         st.rerun()
+
 if __name__ == "__main__":
     pass  # Main execution is now handled by the tabs
